@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<meta charset ="UTF-8">
+<html>
+    <head>
+        <style>
+            code{
+                background-color: rgb(128, 197, 125);
+            }
+            code.json-code{
+                background-color: rgb(125, 151, 224);
+            }
+        </style>
+        <title>JSONizer 1.1. by Mateusz Loska</title>
+    </head>
+    <body>
+        <h2>JSONizer 1.1. <small>by Mateusz Loska </small></h2>
+        <hr>
+        <p>
+        JSONizer application converts .csv files into .json files. 
+        Please give the name of the file you want to convert to json and the path 
+        you want to save the json data in. 
+
+        <br>
+        </p>
+        <code>
+        <b>python jsonizer.py INPUT_FILE.CSV INPUT_FILE.JSON [SEPARATOR] [filter] [FILTER_KEY] [FILTER_VALUE]</b>
+        </code>
+        <p>
+        depending on which separator you use in the CSV file you can specify the separator 
+        the default value is comma, so you can leave the field empty 
+        you can either pass a string or use one of the predefined values:
+        comma space tab semicolon
+      
+        <br>
+        example:
+        </p>
+        <code>python jsonizer.py file1.csv file2.json semicolon </code>
+        <p>
+        you can also filter the data, so that only values matching the key and its value will be shown
+
+        <br>
+        example:
+        </p>
+        <code>python jsonizer.py file1.csv file2.json semicolon filter surname kowalski </code>
+        (converts only rows that match surname value of "kowalski" to json)
+
+        when we use comma as separator we could use the shorter version:
+        <code>python jsonizer.py file1.csv file2.json filter surname kowalski </code>
+        
+        </p>
+
+        <h2>Examples</h2>
+        <hr>
+
+        <h3>Converting simple .csv data to json with the default comma separator</h3>
+        <a href="./dummy_data_tab.csv"><button>Download the dummy data here</button></a>
+        <br>
+        <p>You can convert simple csv files that are saved with the comma separator as following:</p>
+        <code>python jsonizer.py dummy_data.csv dummy_data.json</code>
+
+        <code class="json-code"> <br>
+            [ <br>
+            { <br>
+                "id":"1", <br>
+                "surname":"Kowalski", <br>
+                "country":"PL", <br>
+                "age":"32", <br>
+                "job":"programmer" <br>
+            },<br>
+            ... <br>
+        </code>
+        <br>
+
+        <h3>Converting a .csv file with tab separator</h3>
+        <a href="./dummy_data_tab.csv"><button>Download the dummy data here</button></a>
+        <br>
+        <p>As .csv files could be saved with different separators you can use some predefined values such as <code>tab</code>
+        , <code>space</code> or <code>semicolon</code> to convert the data.</p>
+        <code>python jsonizer.py dummy_data_tab.csv dummy_data_tab.json tab</code>
+        <code class="json-code"> <br>
+            [ <br>
+            { <br>
+                "id":"1", <br>
+                "surname":"Kowalski", <br>
+                "country":"PL", <br>
+                "age":"32", <br>
+                "job":"programmer" <br>
+            },<br>
+            ... <br>
+        </code>
+        <br>
+
+        <h3>Filtering and converting a .csv file with custom separator</h3>
+
+        <a href="./dummy_data_letter.csv"><button>Download the dummy data here</button></a>
+        <br>
+        <p>You can filter a .csv file and generate json data using filters. In this example you can see, how to
+            filter out all the data with the country "UK" from the dummy data, so that only the rows containing for country
+            will be converted to json.
+        </p>
+        <code>python jsonizer.py dummy_data_letter.csv dummy_data_letter.json p filter country UK</code>
+
+        <code class="json-code">   
+            <br>         	
+            [ <br>
+            { <br>
+                "id":"5", <br>
+                "surname":"Kij", <br>
+                "age":"50", <br>
+                "job":"athlete" <br>
+            }, <br>
+            { <br>
+                "id":"6", <br>
+                "surname":"Anderson", <br>
+                "age":"45", <br>
+                "job":"athlete" <br>
+            }, <br>
+            {
+                "id":"8", <br>
+                "surname":"Johnson", <br>
+                "age":"22", <br>
+                "job":"seller" <br>
+            } <br>
+        ] <br>
+        </code>
+
+    </body>
+</html>
